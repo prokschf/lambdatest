@@ -1,9 +1,12 @@
+import datetime
 import time
 import subprocess
 import boto3
 import base64
 import random
 import json
+import botocore.exceptions
+import numpy as np
 
 
 
@@ -48,7 +51,7 @@ def build_and_push_docker_image(ecr_repository, image_tag, dockerfile_path):
     # Build the Docker image
     full_image_name = f'{ecr_repository}:{image_tag}'
     subprocess.run(['docker', 'build', '-t', full_image_name, '-f', dockerfile_path, '.'], check=True)
-
+    print (dockerfile_path)
     # Tag the Docker image for ECR
     subprocess.run(['docker', 'tag', full_image_name, full_image_name], check=True)
 
@@ -68,13 +71,26 @@ def create_or_update_lambda_function(image_uri, lambda_function_name):
             Timeout=15,
             MemorySize=128
         )
+        time.sleep(5)
     except lambda_client.exceptions.ResourceConflictException:
         lambda_client.update_function_code(
             FunctionName=lambda_function_name,
             ImageUri=image_uri
         )
 
-def extract_latest_invocation_details(log_group_name, x=10):
+def get_timestamp_ms(year=None, month=None, day=None, hour=0, minute=0, second=0):
+    if year is not None and month is not None and day is not None:
+        # Create a datetime object for the specified date and time
+        dt = datetime.datetime(year, month, day, hour, minute, second)
+    else:
+        # Use current datetime if no specific date and time are provided
+        dt = datetime.datetime.now()
+        
+    # Convert to timestamp in milliseconds
+    timestamp_ms = int(dt.timestamp() * 1000)
+    return timestamp_ms        
+
+def extract_latest_invocation_details(log_group_name, start_time, x=10):
     # Get the latest log stream
     streams = logs_client.describe_log_streams(
         logGroupName=log_group_name,
@@ -91,7 +107,8 @@ def extract_latest_invocation_details(log_group_name, x=10):
     events = logs_client.get_log_events(
         logGroupName=log_group_name,
         logStreamName=latest_stream_name,
-        limit=6*x  # Adjust based on how many latest events you want to fetch
+        limit=6*x,  # Adjust based on how many latest events you want to fetch
+        startTime=start_time 
     )
     
     # Initialize list to hold details of each invocation
@@ -122,20 +139,47 @@ def generate_random_matrix(rows, cols, min_value, max_value):
     return [[random.randint(min_value, max_value) for _ in range(cols)] for _ in range(rows)]
 
 
-def invoke_lambda_and_get_stats(lambda_function_name, log_group_name):
-    for _ in range(10):
-        response = lambda_client.invoke(
-            FunctionName=lambda_function_name,
-            InvocationType='RequestResponse',
-            Payload=json.dumps({"matrix": generate_random_matrix(5, 5, -10, 10)
-            })
-        )
-        time.sleep(0.1)
+def invoke_lambda_and_get_stats(lambda_function_name, log_group_name, function_payload):
+    start_time = get_timestamp_ms()
+    attempts = 0
+    max_attempts = 10  # Set a max number of attempts to avoid infinite retries
+    
+    while attempts < max_attempts:
+        print ('attempt')
+        try:
+            for _ in range(10):
+                print ('inv')
+                response = lambda_client.invoke(
+                    FunctionName=lambda_function_name,
+                    InvocationType='RequestResponse',
+                    Payload=function_payload
+                )
+                time.sleep(0.1)
+            # If invoke is successful, break out of the loop
+            break
+        except botocore.exceptions.ClientError as e:
+            if e.response['Error']['Code'] == 'ResourceConflictException':
+                print(f"Attempt {attempts + 1} failed with ResourceConflictException. Waiting 3 seconds before retrying.")
+                attempts += 1
+                time.sleep(3)            
+            else: 
+                print(f"An unexpected error occurred: {str(e)}")
+                raise  # Re-raise the unexpected exception to handle it according to the outer logic
+        except Exception as e:
+            print(f"An unexpected error occurred: {str(e)}")
+            raise  # Re-raise the unexpected exception to handle it according to the outer logic
+
+    if attempts == max_attempts:
+        raise Exception("Maximum retry attempts reached. Function invocation failed.")
+    
+    # Wait a bit for logs to generate
     time.sleep(5)
-    stats = extract_latest_invocation_details(log_group_name)
+    
+    # Assume extract_latest_invocation_details is implemented elsewhere
+    stats = extract_latest_invocation_details(log_group_name, start_time)
     return stats
 
-def runner(task, lang, lib):
+def full_create_pass(task, lang, lib):
     repo_name =  task + lang + lib
     ecr_repository = '896349342502.dkr.ecr.us-east-1.amazonaws.com/' + repo_name  # Change to your ECR repository URI
     image_tag = 'latest'
@@ -148,13 +192,77 @@ def runner(task, lang, lib):
     authenticate_docker_to_ecr(proxy_endpoint)      
     image_uri = build_and_push_docker_image(ecr_repository, image_tag, dockerfile_path)
     create_or_update_lambda_function(image_uri, lambda_function_name)
-    execution_stats = invoke_lambda_and_get_stats(lambda_function_name, log_group_name)
+
+
+def run_lambda(task, lang, lib, function_payload):
+    repo_name =  task + lang + lib
+    ecr_repository = '896349342502.dkr.ecr.us-east-1.amazonaws.com/' + repo_name  # Change to your ECR repository URI
+    image_tag = 'latest'
+    dockerfile_path = f"functions/{task}/{lang}/{lib}.dockerfile"
+    lambda_function_name = f'{task}-{lib}-{lang}'
+    log_group_name = f'/aws/lambda/{lambda_function_name}'
+    proxy_endpoint = "896349342502.dkr.ecr.us-east-1.amazonaws.com"
+
+    execution_stats = invoke_lambda_and_get_stats(lambda_function_name, log_group_name, function_payload)
     print(execution_stats)
+    return execution_stats
 
 
-task = "invmatrix"
-lang = "java"
-lib = "math3"
 
-runner(task, lang, lib)
+tasks = {}
+tasks['invmatrix'] = {}
+payloads = {}
+payloads['invmatrix'] = [
+    json.dumps({"matrix": generate_random_matrix(5, 5, -10, 10)}) #25
+#    json.dumps({"matrix": generate_random_matrix(10, 10, -10, 10)}), #100
+#    json.dumps({"matrix": generate_random_matrix(20, 20, -10, 10)}), #400
+#    json.dumps({"matrix": generate_random_matrix(50, 50, -10, 10)}) #2500
+]
+langlibs = {}
+tasks['invmatrix']['python'] = ['plain', 'nump', 'pand', 'sci_py']
+tasks['invmatrix']['node'] = ['plain', 'mathjs']
+tasks['invmatrix']['net'] = ['mnet']
+tasks['invmatrix']['java'] = ['math3']
+tasks['invmatrix']['go'] = ['gonum']
 
+for task in tasks:    
+    for lang in tasks[task]:
+        for lib in tasks[task][lang]:
+#            full_create_pass(task, lang, lib)
+            pass
+results = {}
+for task in tasks:    
+    for payload_index, payload in payloads[task]:
+        for lang in tasks[task]:
+            for lib in tasks[task][lang]:
+                print (task)
+                print (lang)
+                print (lib)
+                print (payload)
+                lambda_stats = run_lambda(task, lang, lib, payload)
+                
+                memory_used = np.array([float(stat['memory_used_mb']) for stat in lambda_stats])
+                billed_duration = np.array([float(stat['billed_duration_ms']) for stat in lambda_stats])
+
+                run_result = {
+                    'payload_index': payload_index,
+                    'memory_used_mb': {
+                        'average': np.mean(memory_used),
+                        'median': np.median(memory_used),
+                        'std_dev': np.std(memory_used)
+                    },
+                    'billed_duration_ms': {
+                        'average': np.mean(billed_duration),
+                        'median': np.median(billed_duration),
+                        'std_dev': np.std(billed_duration)
+                    }
+                }
+
+                # Store the calculated stats
+                results[task][lang][lib].append(run_result)
+
+# Save the results to a JSON file
+with open('lambda_stats.json', 'w') as f:
+    json.dump(results, f, indent=4)
+
+print("Results stored in lambda_stats.json")
