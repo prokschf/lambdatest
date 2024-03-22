@@ -213,10 +213,10 @@ tasks = {}
 tasks['invmatrix'] = {}
 payloads = {}
 payloads['invmatrix'] = [
-    json.dumps({"matrix": generate_random_matrix(5, 5, -10, 10)}) #25
-#    json.dumps({"matrix": generate_random_matrix(10, 10, -10, 10)}), #100
-#    json.dumps({"matrix": generate_random_matrix(20, 20, -10, 10)}), #400
-#    json.dumps({"matrix": generate_random_matrix(50, 50, -10, 10)}) #2500
+    json.dumps({"matrix": generate_random_matrix(5, 5, -10, 10)}), #25
+    json.dumps({"matrix": generate_random_matrix(10, 10, -10, 10)}), #100
+    json.dumps({"matrix": generate_random_matrix(20, 20, -10, 10)}), #400
+    json.dumps({"matrix": generate_random_matrix(50, 50, -10, 10)}) #2500
 ]
 langlibs = {}
 tasks['invmatrix']['python'] = ['plain', 'nump', 'pand', 'sci_py']
@@ -231,21 +231,30 @@ for task in tasks:
 #            full_create_pass(task, lang, lib)
             pass
 results = {}
-for task in tasks:    
-    for payload_index, payload in payloads[task]:
-        for lang in tasks[task]:
-            for lib in tasks[task][lang]:
+for task in tasks:   
+    results[task] = {} 
+    for lang in tasks[task]:
+        results[task][lang] = {}
+        for lib in tasks[task][lang]:
+            payload_index = 0
+            results[task][lang][lib] = []
+            for payload in payloads[task]:
+
                 print (task)
                 print (lang)
                 print (lib)
                 print (payload)
-                lambda_stats = run_lambda(task, lang, lib, payload)
-                
-                memory_used = np.array([float(stat['memory_used_mb']) for stat in lambda_stats])
-                billed_duration = np.array([float(stat['billed_duration_ms']) for stat in lambda_stats])
+                lambda_stats = []
+                while len(lambda_stats) == 0:
+                    lambda_stats = run_lambda(task, lang, lib, payload)
+                    print ("running")
+                    
+
+                memory_used = np.array([float(stat['memory_used_mb']) for stat in lambda_stats[1:]])
+                billed_duration = np.array([float(stat['billed_duration_ms']) for stat in lambda_stats[1:]])
 
                 run_result = {
-                    'payload_index': payload_index,
+                    'payload' : payload_index,
                     'memory_used_mb': {
                         'average': np.mean(memory_used),
                         'median': np.median(memory_used),
@@ -255,14 +264,17 @@ for task in tasks:
                         'average': np.mean(billed_duration),
                         'median': np.median(billed_duration),
                         'std_dev': np.std(billed_duration)
-                    }
+                    },
+                    'billed_duration_init': {
+                        'value': lambda_stats[0]['billed_duration_ms'],
+                    }                     
                 }
 
                 # Store the calculated stats
                 results[task][lang][lib].append(run_result)
-
+                payload_index = payload_index + 1
+                with open('lambda_stats.json', 'w') as f:
+                    json.dump(results, f, indent=4)
 # Save the results to a JSON file
-with open('lambda_stats.json', 'w') as f:
-    json.dump(results, f, indent=4)
 
 print("Results stored in lambda_stats.json")
