@@ -1,4 +1,4 @@
-module gocrypto
+module gomath
 
 go 1.22.1
 

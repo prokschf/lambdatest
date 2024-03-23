@@ -1,3 +1,4 @@
+import os
 import string
 import random
 import datetime
@@ -71,9 +72,9 @@ def create_or_update_lambda_function(image_uri, lambda_function_name):
             PackageType='Image',
             Role='arn:aws:iam::896349342502:role/service-role/Bedrock_runner-role-xbe5r7cd',
             Timeout=15,
-            MemorySize=128
+            MemorySize=256
         )
-        time.sleep(5)
+        time.sleep(10)
     except lambda_client.exceptions.ResourceConflictException:
         lambda_client.update_function_code(
             FunctionName=lambda_function_name,
@@ -92,7 +93,7 @@ def get_timestamp_ms(year=None, month=None, day=None, hour=0, minute=0, second=0
     timestamp_ms = int(dt.timestamp() * 1000)
     return timestamp_ms        
 
-def extract_latest_invocation_details(log_group_name, start_time, x=10):
+def extract_latest_invocation_details(log_group_name, start_time, x=30):
     # Get the latest log stream
     streams = logs_client.describe_log_streams(
         logGroupName=log_group_name,
@@ -109,7 +110,7 @@ def extract_latest_invocation_details(log_group_name, start_time, x=10):
     events = logs_client.get_log_events(
         logGroupName=log_group_name,
         logStreamName=latest_stream_name,
-        limit=6*x,  # Adjust based on how many latest events you want to fetch
+        limit=20*x,  # Adjust based on how many latest events you want to fetch
         startTime=start_time 
     )
     
@@ -117,8 +118,13 @@ def extract_latest_invocation_details(log_group_name, start_time, x=10):
     invocations_details = []
     
     # Iterate through events to find memory and duration
+
+    for event in events['events'][:10]:
+        print (event['message'][:200])
+
     for event in events['events']:
         message = event['message']
+
         invocation_detail = {}
         
         # Parsing for Max Memory Used and Duration
@@ -141,7 +147,7 @@ def generate_random_matrix(rows, cols, min_value, max_value):
     return [[random.randint(min_value, max_value) for _ in range(cols)] for _ in range(rows)]
 
 
-def invoke_lambda_and_get_stats(lambda_function_name, log_group_name, function_payload):
+def invoke_lambda_and_get_stats(lambda_function_name, log_group_name, function_payload, run_count = 30):
     start_time = get_timestamp_ms()
     attempts = 0
     max_attempts = 10  # Set a max number of attempts to avoid infinite retries
@@ -149,7 +155,7 @@ def invoke_lambda_and_get_stats(lambda_function_name, log_group_name, function_p
     while attempts < max_attempts:
         print ('attempt')
         try:
-            for _ in range(10):
+            for _ in range(run_count):
                 print ('inv')
                 response = lambda_client.invoke(
                     FunctionName=lambda_function_name,
@@ -175,7 +181,7 @@ def invoke_lambda_and_get_stats(lambda_function_name, log_group_name, function_p
         raise Exception("Maximum retry attempts reached. Function invocation failed.")
     
     # Wait a bit for logs to generate
-    time.sleep(5)
+    time.sleep(10)
     
     # Assume extract_latest_invocation_details is implemented elsewhere
     stats = extract_latest_invocation_details(log_group_name, start_time)
@@ -195,6 +201,34 @@ def full_create_pass(task, lang, lib):
     image_uri = build_and_push_docker_image(ecr_repository, image_tag, dockerfile_path)
     create_or_update_lambda_function(image_uri, lambda_function_name)
 
+def generate_knn_input(num_embeddings, dimension=512, k=5):
+    """
+    Generates example input for the Lambda function.
+
+    Parameters:
+    - num_embeddings: The number of random embeddings to generate.
+    - dimension: The dimensionality of each embedding (default 512).
+    - k: The number of nearest neighbors to find.
+
+    Returns:
+    - A dictionary with keys 'embeddings', 'input_embedding', and 'k',
+      ready to be converted to JSON format as input for the Lambda function.
+    """
+    # Generate random embeddings
+    embeddings = np.random.rand(num_embeddings, dimension).tolist()
+
+    # Randomly select one embedding as the input embedding
+    input_index = np.random.randint(0, num_embeddings)
+    input_embedding = embeddings[input_index]
+
+    # Prepare the input structure for the Lambda function
+    lambda_input = {
+        "embeddings": embeddings,
+        "input_embedding": input_embedding,
+        "k": k
+    }
+
+    return lambda_input
 
 def generate_random_string(size_kb):
     """
@@ -214,7 +248,7 @@ def generate_random_string(size_kb):
     
     return random_string
 
-def run_lambda(task, lang, lib, function_payload):
+def run_lambda(task, lang, lib, function_payload, run_count = 30):
     repo_name =  task + lang + lib
     ecr_repository = '896349342502.dkr.ecr.us-east-1.amazonaws.com/' + repo_name  # Change to your ECR repository URI
     image_tag = 'latest'
@@ -223,39 +257,25 @@ def run_lambda(task, lang, lib, function_payload):
     log_group_name = f'/aws/lambda/{lambda_function_name}'
     proxy_endpoint = "896349342502.dkr.ecr.us-east-1.amazonaws.com"
 
-    execution_stats = invoke_lambda_and_get_stats(lambda_function_name, log_group_name, function_payload)
+    execution_stats = invoke_lambda_and_get_stats(lambda_function_name, log_group_name, function_payload, run_count)
     print(execution_stats)
     return execution_stats
 
-def generate_random_embeddings(num_embeddings, dimension=512):
-    """
-    Generates a list of random embeddings.
-
-    Parameters:
-    - num_embeddings: The number of embeddings to generate.
-    - dimension: The dimension of each embedding. Defaults to 512.
-
-    Returns:
-    - A numpy array of shape (num_embeddings, dimension) with random embeddings.
-    """
-    return np.random.rand(num_embeddings, dimension)
-
 def test_runner():
-    task = 'hashing'
-    lang = 'python'
-    lib = 'hazmat'
-    payload = json.dumps({"inputString": generate_random_string(32)})
+    task = 'knn'
+    lang = 'go'
+    lib = 'gomath'
+    payload = json.dumps(generate_knn_input(500))
     full_create_pass(task, lang, lib)
-    lambda_stats = run_lambda(task, lang, lib, payload)
+    lambda_stats = run_lambda(task, lang, lib, payload, 3)
     print (lambda_stats)
 
-test_runner()
-    
 def runner():
 
     tasks = {}
-    tasks['invmatrix'] = {}
     payloads = {}
+
+    tasks['invmatrix'] = {}
     payloads['invmatrix'] = [
         json.dumps({"matrix": generate_random_matrix(5, 5, -10, 10)}), #25
         json.dumps({"matrix": generate_random_matrix(10, 10, -10, 10)}), #100
@@ -268,6 +288,7 @@ def runner():
     tasks['invmatrix']['java'] = ['math3']
     tasks['invmatrix']['go'] = ['gonum']
     
+    tasks['hashing'] = {}
     payloads['hashing'] = [
         json.dumps({"inputString": generate_random_string(1)}),
         json.dumps({"inputString": generate_random_string(16)}),
@@ -277,18 +298,21 @@ def runner():
     tasks['hashing']['go'] = ['gocrypto']
     tasks['hashing']['java'] = ['javasec']
     tasks['hashing']['net'] = ['syscrypt']
-    tasks['hashing']['node'] = ['crypto']
-    tasks['hashing']['node'] = ['cryptojs']
-    tasks['hashing']['node'] = ['hashjs']
-    tasks['hashing']['python'] = ['hashl']
-    tasks['hashing']['python'] = ['hazmat']
+    tasks['hashing']['node'] = ['crypto', 'cryptojs', 'hashjs']
+    tasks['hashing']['python'] = ['hashl', 'hazmat']
 
-    
+    tasks['knn'] = {}    
     payloads['knn'] = [
-        json.dumps({"inputString": generate_random_string(1)}),
-
+        json.dumps(json.dumps(generate_knn_input(10))),
+        json.dumps(json.dumps(generate_knn_input(100))),
+        json.dumps(json.dumps(generate_knn_input(250))),
+        json.dumps(json.dumps(generate_knn_input(500))),
     ]
-    tasks['knn']['python'] = ['nump']
+    tasks['knn']['python'] = ['nump', 'skl', 'anno']
+    tasks['knn']['node'] = ['mlknn']
+    tasks['knn']['net'] = ['linqnet']
+    tasks['knn']['java'] = ['plain']
+    tasks['knn']['go'] = ['gomath']
 
     for task in tasks:    
         for lang in tasks[task]:
@@ -297,51 +321,69 @@ def runner():
                 pass
 
 
-    results = {}
+    # Check if the JSON file exists
+    if os.path.isfile('lambda_stats.json'):
+        with open('lambda_stats.json', 'r') as f:
+            results = json.load(f)
+    else:
+        results = {}
+
     for task in tasks:   
-        results[task] = {} 
+        if task not in results:
+            results[task] = {} 
         for lang in tasks[task]:
-            results[task][lang] = {}
+            if lang not in results[task]:
+                results[task][lang] = {}
             for lib in tasks[task][lang]:
-                payload_index = 0
-                results[task][lang][lib] = []
-                for payload in payloads[task]:
+                if lib not in results[task][lang]:
+                    results[task][lang][lib] = []
+                    payload_index = 0
+                    for payload in payloads[task]:
+                        print(task)
+                        print(lang)
+                        print(lib)
+                        print(payload)
+                        lambda_stats = []
+                        while len(lambda_stats) == 0:
+                            lambda_stats = run_lambda(task, lang, lib, payload)
+                            print("running")
 
-                    print (task)
-                    print (lang)
-                    print (lib)
-                    print (payload)
-                    lambda_stats = []
-                    while len(lambda_stats) == 0:
-                        lambda_stats = run_lambda(task, lang, lib, payload)
-                        print ("running")
-                        
+                        memory_used = np.array([float(stat['memory_used_mb']) for stat in lambda_stats[1:]])
+                        billed_duration = np.array([float(stat['billed_duration_ms']) for stat in lambda_stats[1:]])
 
-                    memory_used = np.array([float(stat['memory_used_mb']) for stat in lambda_stats[1:]])
-                    billed_duration = np.array([float(stat['billed_duration_ms']) for stat in lambda_stats[1:]])
+                        run_result = {
+                            'payload': payload_index,
+                            'memory_used_mb': {
+                                'average': np.mean(memory_used),
+                                'median': np.median(memory_used),
+                                'std_dev': np.std(memory_used)
+                            },
+                            'billed_duration_ms': {
+                                'average': np.mean(billed_duration),
+                                'median': np.median(billed_duration),
+                                'std_dev': np.std(billed_duration)
+                            },
+                            'billed_duration_init': {
+                                'value': lambda_stats[0]['billed_duration_ms'],
+                            }                     
+                        }
 
-                    run_result = {
-                        'payload' : payload_index,
-                        'memory_used_mb': {
-                            'average': np.mean(memory_used),
-                            'median': np.median(memory_used),
-                            'std_dev': np.std(memory_used)
-                        },
-                        'billed_duration_ms': {
-                            'average': np.mean(billed_duration),
-                            'median': np.median(billed_duration),
-                            'std_dev': np.std(billed_duration)
-                        },
-                        'billed_duration_init': {
-                            'value': lambda_stats[0]['billed_duration_ms'],
-                        }                     
-                    }
+                        # Store the calculated stats
+                        results[task][lang][lib].append(run_result)
+                        payload_index += 1
+                else:
+                    print (f"skipping {task} {lang} {lib}")
 
-                    # Store the calculated stats
-                    results[task][lang][lib].append(run_result)
-                    payload_index = payload_index + 1
-                    with open('lambda_stats.json', 'w') as f:
-                        json.dump(results, f, indent=4)
-    # Save the results to a JSON file
+    # Save the results to the JSON file
+    with open('lambda_stats.json', 'w') as f:
+        json.dump(results, f, indent=4)
 
     print("Results stored in lambda_stats.json")
+
+runner()
+#test_runner()
+##################################
+######## CAT IMAGE CONVERT
+######## CAT IMAGE MANIPULATION OF SOME SORT
+######## IMAGE RECOGNITION???
+##################################    

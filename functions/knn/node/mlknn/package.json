@@ -1,0 +1,22 @@
+{
+  "name": "knn_lambda_project",
+  "version": "1.0.0",
+  "description": "AWS Lambda function for K-Nearest Neighbors using ml-knn.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "AWS",
+    "Lambda",
+    "KNN",
+    "ml-knn",
+    "Machine Learning"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "mathjs": "^12.4.1",
+    "ml-knn": "^3.0.0"
+  }
+}
