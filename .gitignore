@@ -12,6 +12,15 @@ Thumbs.db
 *.sublime*
 *~
 
+# Dependency directories
+node_modules/
+
+# Build outputs
+dist/
+build/
+out/
+
+
 # Python
 __pycache__/
 *.py[cod]
