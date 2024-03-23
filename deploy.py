@@ -1,3 +1,5 @@
+import string
+import random
 import datetime
 import time
 import subprocess
@@ -50,7 +52,7 @@ def authenticate_docker_to_ecr(proxy_endpoint):
 def build_and_push_docker_image(ecr_repository, image_tag, dockerfile_path):
     # Build the Docker image
     full_image_name = f'{ecr_repository}:{image_tag}'
-    subprocess.run(['docker', 'build', '-t', full_image_name, '-f', dockerfile_path, '.'], check=True)
+    subprocess.run(['docker', 'build', '-t', full_image_name , '-f', dockerfile_path, '.'], check=True)
     print (dockerfile_path)
     # Tag the Docker image for ECR
     subprocess.run(['docker', 'tag', full_image_name, full_image_name], check=True)
@@ -194,6 +196,24 @@ def full_create_pass(task, lang, lib):
     create_or_update_lambda_function(image_uri, lambda_function_name)
 
 
+def generate_random_string(size_kb):
+    """
+    Generates a random string of size size_kb kilobytes.
+
+    :param size_kb: Size of the string to generate in kilobytes.
+    :return: A string containing random characters.
+    """
+    # Define the size of the string in bytes
+    size_bytes = size_kb * 1024
+    
+    # Define the pool of characters to choose from
+    characters = string.ascii_letters + string.digits + string.punctuation
+    
+    # Generate a random string of the desired size
+    random_string = ''.join(random.choice(characters) for _ in range(size_bytes))
+    
+    return random_string
+
 def run_lambda(task, lang, lib, function_payload):
     repo_name =  task + lang + lib
     ecr_repository = '896349342502.dkr.ecr.us-east-1.amazonaws.com/' + repo_name  # Change to your ECR repository URI
@@ -207,74 +227,121 @@ def run_lambda(task, lang, lib, function_payload):
     print(execution_stats)
     return execution_stats
 
+def generate_random_embeddings(num_embeddings, dimension=512):
+    """
+    Generates a list of random embeddings.
+
+    Parameters:
+    - num_embeddings: The number of embeddings to generate.
+    - dimension: The dimension of each embedding. Defaults to 512.
+
+    Returns:
+    - A numpy array of shape (num_embeddings, dimension) with random embeddings.
+    """
+    return np.random.rand(num_embeddings, dimension)
+
+def test_runner():
+    task = 'hashing'
+    lang = 'python'
+    lib = 'hazmat'
+    payload = json.dumps({"inputString": generate_random_string(32)})
+    full_create_pass(task, lang, lib)
+    lambda_stats = run_lambda(task, lang, lib, payload)
+    print (lambda_stats)
+
+test_runner()
+    
+def runner():
+
+    tasks = {}
+    tasks['invmatrix'] = {}
+    payloads = {}
+    payloads['invmatrix'] = [
+        json.dumps({"matrix": generate_random_matrix(5, 5, -10, 10)}), #25
+        json.dumps({"matrix": generate_random_matrix(10, 10, -10, 10)}), #100
+        json.dumps({"matrix": generate_random_matrix(20, 20, -10, 10)}), #400
+        json.dumps({"matrix": generate_random_matrix(50, 50, -10, 10)}) #2500
+    ]
+    tasks['invmatrix']['python'] = ['plain', 'nump', 'pand', 'sci_py']
+    tasks['invmatrix']['node'] = ['plain', 'mathjs']
+    tasks['invmatrix']['net'] = ['mnet']
+    tasks['invmatrix']['java'] = ['math3']
+    tasks['invmatrix']['go'] = ['gonum']
+    
+    payloads['hashing'] = [
+        json.dumps({"inputString": generate_random_string(1)}),
+        json.dumps({"inputString": generate_random_string(16)}),
+        json.dumps({"inputString": generate_random_string(32)}),
+        json.dumps({"inputString": generate_random_string(48)})
+    ]
+    tasks['hashing']['go'] = ['gocrypto']
+    tasks['hashing']['java'] = ['javasec']
+    tasks['hashing']['net'] = ['syscrypt']
+    tasks['hashing']['node'] = ['crypto']
+    tasks['hashing']['node'] = ['cryptojs']
+    tasks['hashing']['node'] = ['hashjs']
+    tasks['hashing']['python'] = ['hashl']
+    tasks['hashing']['python'] = ['hazmat']
+
+    
+    payloads['knn'] = [
+        json.dumps({"inputString": generate_random_string(1)}),
+
+    ]
+    tasks['knn']['python'] = ['nump']
+
+    for task in tasks:    
+        for lang in tasks[task]:
+            for lib in tasks[task][lang]:
+    #            full_create_pass(task, lang, lib)
+                pass
 
 
-tasks = {}
-tasks['invmatrix'] = {}
-payloads = {}
-payloads['invmatrix'] = [
-    json.dumps({"matrix": generate_random_matrix(5, 5, -10, 10)}), #25
-    json.dumps({"matrix": generate_random_matrix(10, 10, -10, 10)}), #100
-    json.dumps({"matrix": generate_random_matrix(20, 20, -10, 10)}), #400
-    json.dumps({"matrix": generate_random_matrix(50, 50, -10, 10)}) #2500
-]
-langlibs = {}
-tasks['invmatrix']['python'] = ['plain', 'nump', 'pand', 'sci_py']
-tasks['invmatrix']['node'] = ['plain', 'mathjs']
-tasks['invmatrix']['net'] = ['mnet']
-tasks['invmatrix']['java'] = ['math3']
-tasks['invmatrix']['go'] = ['gonum']
+    results = {}
+    for task in tasks:   
+        results[task] = {} 
+        for lang in tasks[task]:
+            results[task][lang] = {}
+            for lib in tasks[task][lang]:
+                payload_index = 0
+                results[task][lang][lib] = []
+                for payload in payloads[task]:
 
-for task in tasks:    
-    for lang in tasks[task]:
-        for lib in tasks[task][lang]:
-#            full_create_pass(task, lang, lib)
-            pass
-results = {}
-for task in tasks:   
-    results[task] = {} 
-    for lang in tasks[task]:
-        results[task][lang] = {}
-        for lib in tasks[task][lang]:
-            payload_index = 0
-            results[task][lang][lib] = []
-            for payload in payloads[task]:
+                    print (task)
+                    print (lang)
+                    print (lib)
+                    print (payload)
+                    lambda_stats = []
+                    while len(lambda_stats) == 0:
+                        lambda_stats = run_lambda(task, lang, lib, payload)
+                        print ("running")
+                        
 
-                print (task)
-                print (lang)
-                print (lib)
-                print (payload)
-                lambda_stats = []
-                while len(lambda_stats) == 0:
-                    lambda_stats = run_lambda(task, lang, lib, payload)
-                    print ("running")
-                    
+                    memory_used = np.array([float(stat['memory_used_mb']) for stat in lambda_stats[1:]])
+                    billed_duration = np.array([float(stat['billed_duration_ms']) for stat in lambda_stats[1:]])
 
-                memory_used = np.array([float(stat['memory_used_mb']) for stat in lambda_stats[1:]])
-                billed_duration = np.array([float(stat['billed_duration_ms']) for stat in lambda_stats[1:]])
+                    run_result = {
+                        'payload' : payload_index,
+                        'memory_used_mb': {
+                            'average': np.mean(memory_used),
+                            'median': np.median(memory_used),
+                            'std_dev': np.std(memory_used)
+                        },
+                        'billed_duration_ms': {
+                            'average': np.mean(billed_duration),
+                            'median': np.median(billed_duration),
+                            'std_dev': np.std(billed_duration)
+                        },
+                        'billed_duration_init': {
+                            'value': lambda_stats[0]['billed_duration_ms'],
+                        }                     
+                    }
 
-                run_result = {
-                    'payload' : payload_index,
-                    'memory_used_mb': {
-                        'average': np.mean(memory_used),
-                        'median': np.median(memory_used),
-                        'std_dev': np.std(memory_used)
-                    },
-                    'billed_duration_ms': {
-                        'average': np.mean(billed_duration),
-                        'median': np.median(billed_duration),
-                        'std_dev': np.std(billed_duration)
-                    },
-                    'billed_duration_init': {
-                        'value': lambda_stats[0]['billed_duration_ms'],
-                    }                     
-                }
+                    # Store the calculated stats
+                    results[task][lang][lib].append(run_result)
+                    payload_index = payload_index + 1
+                    with open('lambda_stats.json', 'w') as f:
+                        json.dump(results, f, indent=4)
+    # Save the results to a JSON file
 
-                # Store the calculated stats
-                results[task][lang][lib].append(run_result)
-                payload_index = payload_index + 1
-                with open('lambda_stats.json', 'w') as f:
-                    json.dump(results, f, indent=4)
-# Save the results to a JSON file
-
-print("Results stored in lambda_stats.json")
+    print("Results stored in lambda_stats.json")
