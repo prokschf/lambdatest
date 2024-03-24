@@ -16,7 +16,8 @@ COPY functions/invmatrix/java/src /app/src
 # Package the application
 RUN mvn package
 
-# Use the AWS provided base image for Java runtime
+# Use the AWS provided base image for Java runtimejavav version
+
 FROM public.ecr.aws/lambda/java:11
 
 # Copy the built JAR file from the builder stage to the production image

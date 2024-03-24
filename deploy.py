@@ -262,10 +262,10 @@ def run_lambda(task, lang, lib, function_payload, run_count = 30):
     return execution_stats
 
 def test_runner():
-    task = 'knn'
-    lang = 'go'
-    lib = 'gomath'
-    payload = json.dumps(generate_knn_input(500))
+    task = 'convertimg'
+    lang = 'goimage'
+    lib = 'goimage'
+    payload = json.dumps({"urls": ["https://wallpapers.com/images/hd/funny-cats-pictures-uu9qufqc5zq8l7el.jpg"]})
     full_create_pass(task, lang, lib)
     lambda_stats = run_lambda(task, lang, lib, payload, 3)
     print (lambda_stats)
@@ -303,16 +303,26 @@ def runner():
 
     tasks['knn'] = {}    
     payloads['knn'] = [
-        json.dumps(json.dumps(generate_knn_input(10))),
-        json.dumps(json.dumps(generate_knn_input(100))),
-        json.dumps(json.dumps(generate_knn_input(250))),
-        json.dumps(json.dumps(generate_knn_input(500))),
+        json.dumps(generate_knn_input(10)),
+        json.dumps(generate_knn_input(100)),
+        json.dumps(generate_knn_input(250)),
+        json.dumps(generate_knn_input(500)),
     ]
     tasks['knn']['python'] = ['nump', 'skl', 'anno']
     tasks['knn']['node'] = ['mlknn']
     tasks['knn']['net'] = ['linqnet']
     tasks['knn']['java'] = ['plain']
     tasks['knn']['go'] = ['gomath']
+
+    tasks['convertimg'] = {}    
+    payloads['convertimg'] = [
+        json.dumps({"urls": ["https://wallpapers.com/images/hd/funny-cats-pictures-uu9qufqc5zq8l7el.jpg"]})
+    ]
+    tasks['convertimg']['python'] = ['pilpy']
+    tasks['convertimg']['node'] = ['shar']
+    tasks['convertimg']['go'] = ['goimage']#this one is without any libs
+    tasks['convertimg']['goimage'] = ['goimage']#Breaking the system here a little -- different go libs
+
 
     for task in tasks:    
         for lang in tasks[task]:
@@ -382,8 +392,4 @@ def runner():
 
 runner()
 #test_runner()
-##################################
-######## CAT IMAGE CONVERT
-######## CAT IMAGE MANIPULATION OF SOME SORT
-######## IMAGE RECOGNITION???
-##################################    
+
