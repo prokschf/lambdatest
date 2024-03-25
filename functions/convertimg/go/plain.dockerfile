@@ -6,12 +6,12 @@ WORKDIR /go/src/app
 
 # Copy the go.mod and go.sum files to the container's workspace to download dependencies
 # This assumes your functions/invmatrix/go directory contains these files
-COPY functions/convertimg/goimage/go.mod functions/convertimg/goimage/go.sum ./
+COPY functions/convertimg/go/plain/go.mod functions/convertimg/go/plain/go.sum ./
 # Download the dependencies - this can be cached if not changed
 RUN go mod download
 
 # Now copy the local package files to the container's workspace
-COPY functions/convertimg/goimage/ .
+COPY functions/convertimg/go/plain/ .
 
 # Build the Go app for Linux as AWS Lambda runs on Linux
 # -o specifies the output filename, here assuming the output binary is named "main"

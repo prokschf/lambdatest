@@ -10,7 +10,7 @@ import random
 import json
 import botocore.exceptions
 import numpy as np
-
+from io import StringIO
 
 
 # Initialize boto3 clients
@@ -230,6 +230,43 @@ def generate_knn_input(num_embeddings, dimension=512, k=5):
 
     return lambda_input
 
+def generate_random_csv_string(num_rows, num_columns, num_range=(1, 100)):
+    """
+    Generate a CSV formatted string with random integer data.
+
+    :param num_rows: Number of rows in the CSV data.
+    :param num_columns: Number of columns in the CSV data.
+    :param num_range: Tuple specifying the range (min, max) of the random integers.
+    :return: A string containing the generated CSV data.
+    """
+    output = StringIO()
+    writer = csv.writer(output)
+    
+    # Optionally write a header row, if needed
+    # header = ['Column1', 'Column2', ..., 'ColumnN']
+    # writer.writerow(header)
+    
+    for _ in range(num_rows):
+        row = [random.randint(num_range[0], num_range[1]) for _ in range(num_columns)]
+        writer.writerow(row)
+    
+    # Retrieve the CSV string from the StringIO object
+    csv_string = output.getvalue()
+    output.close()
+    
+    return csv_string
+
+def generate_fft_input(size, num_range=(0, 100)):
+    """
+    Generate a list of random numbers.
+    
+    :param size: The number of random numbers to generate.
+    :param num_range: A tuple specifying the range (min, max) of the random numbers.
+    :return: A list of random numbers.
+    """
+    random_numbers = [random.uniform(num_range[0], num_range[1]) for _ in range(size)]
+    return random_numbers
+
 def generate_random_string(size_kb):
     """
     Generates a random string of size size_kb kilobytes.
@@ -261,11 +298,22 @@ def run_lambda(task, lang, lib, function_payload, run_count = 30):
     print(execution_stats)
     return execution_stats
 
+def generate_random_floats(n, num_range=(1.0, 100.0)):
+    """
+    Generate a list of n random floating-point numbers within the specified range.
+
+    :param n: The number of random floating-point numbers to generate.
+    :param num_range: A tuple specifying the range (min, max) of the random numbers.
+    :return: A list of n random floating-point numbers.
+    """
+    random_numbers = [random.uniform(num_range[0], num_range[1]) for _ in range(n)]
+    return random_numbers
+
 def test_runner():
-    task = 'convertimg'
-    lang = 'goimage'
-    lib = 'goimage'
-    payload = json.dumps({"urls": ["https://wallpapers.com/images/hd/funny-cats-pictures-uu9qufqc5zq8l7el.jpg"]})
+    task = 's3read'
+    lang = 'go'
+    lib = 'sdk'
+    payload = json.dumps({})
     full_create_pass(task, lang, lib)
     lambda_stats = run_lambda(task, lang, lib, payload, 3)
     print (lambda_stats)
@@ -320,14 +368,52 @@ def runner():
     ]
     tasks['convertimg']['python'] = ['pilpy']
     tasks['convertimg']['node'] = ['shar']
-    tasks['convertimg']['go'] = ['goimage']#this one is without any libs
-    tasks['convertimg']['goimage'] = ['goimage']#Breaking the system here a little -- different go libs
+    tasks['convertimg']['go'] = ['goimage', 'plain']
+    
+
+    tasks['s3read'] = {}    
+    payloads['s3read'] = [
+        json.dumps({})
+    ]
+    tasks['s3read']['python'] = ['']
+    tasks['s3read']['node'] = ['']
+    tasks['s3read']['go'] = ['sdk']
+
+    tasks['convertvid'] = {}    
+    payloads['convertvid'] = [
+        json.dumps({"urls": ["https://wallpapers.com/images/hd/funny-cats-pictures-uu9qufqc5zq8l7el.jpg"]})
+    ]
+    tasks['convertvid']['python'] = ['']
+
+    tasks['csvjson'] = {}    
+    payloads['csvjson'] = [
+        json.dumps({"body": generate_random_csv_string(100, 100)})
+    ]
+    tasks['csvjson']['python'] = ['pand']
+
+    tasks['sort'] = {}    
+    payloads['sort'] = [
+        json.dumps({"list": generate_random_floats(100)})
+    ]
+    tasks['sort']['python'] = ['plain']
+
+    tasks['fib'] = {}    
+    payloads['fib'] = [
+        json.dumps({"len": 10})
+    ]
+    tasks['fib']['python'] = ['']
+
+    tasks['fft'] = {}    
+    payloads['fft'] = [
+        json.dumps({"data": generate_fft_input(1000, (0,100))})
+    ]
+    tasks['fft']['python'] = ['nump']
 
 
     for task in tasks:    
         for lang in tasks[task]:
             for lib in tasks[task][lang]:
-    #            full_create_pass(task, lang, lib)
+                full_create_pass(task, lang, lib)
                 pass
 
 
@@ -390,6 +476,6 @@ def runner():
 
     print("Results stored in lambda_stats.json")
 
-runner()
-#test_runner()
+#runner()
+test_runner()
 
