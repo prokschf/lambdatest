@@ -1,3 +1,4 @@
+import csv
 import os
 import string
 import random
@@ -74,7 +75,6 @@ def create_or_update_lambda_function(image_uri, lambda_function_name):
             Timeout=15,
             MemorySize=256
         )
-        time.sleep(10)
     except lambda_client.exceptions.ResourceConflictException:
         lambda_client.update_function_code(
             FunctionName=lambda_function_name,
@@ -124,14 +124,15 @@ def extract_latest_invocation_details(log_group_name, start_time, x=30):
 
     for event in events['events']:
         message = event['message']
+        if ('error' in message.lower()):
+            raise Exception("error")
 
         invocation_detail = {}
         
         # Parsing for Max Memory Used and Duration
-        if "Max Memory Used" in message:
+        if "Max Memory Used" in message and "Duration" in message:
             memory_used_mb = message.split("Max Memory Used: ")[1].split(" MB")[0]
             invocation_detail['memory_used_mb'] = memory_used_mb
-        if "Duration" in message:
             duration_parts = message.split("Duration: ")[1].split(" ms")
             billed_duration_ms = duration_parts[0].strip() if len(duration_parts) > 0 else None
             invocation_detail['billed_duration_ms'] = billed_duration_ms
@@ -311,9 +312,10 @@ def generate_random_floats(n, num_range=(1.0, 100.0)):
 
 def test_runner():
     task = 's3read'
-    lang = 'go'
-    lib = 'sdk'
-    payload = json.dumps({})
+    lang = 'node'
+    lib = 'plain'
+    payload = json.dumps({"bucketName": "imgtemp2", "objectKey" : "short.txt"})
+    print (payload)
     full_create_pass(task, lang, lib)
     lambda_stats = run_lambda(task, lang, lib, payload, 3)
     print (lambda_stats)
@@ -370,45 +372,47 @@ def runner():
     tasks['convertimg']['node'] = ['shar']
     tasks['convertimg']['go'] = ['goimage', 'plain']
     
-
     tasks['s3read'] = {}    
     payloads['s3read'] = [
-        json.dumps({})
+        json.dumps({"bucketName": "imgtemp2", "objectKey" : "short.txt"})
     ]
-    tasks['s3read']['python'] = ['']
-    tasks['s3read']['node'] = ['']
+    tasks['s3read']['python'] = ['boto']
+    tasks['s3read']['node'] = ['plain']
     tasks['s3read']['go'] = ['sdk']
-
-    tasks['convertvid'] = {}    
-    payloads['convertvid'] = [
-        json.dumps({"urls": ["https://wallpapers.com/images/hd/funny-cats-pictures-uu9qufqc5zq8l7el.jpg"]})
-    ]
-    tasks['convertvid']['python'] = ['']
 
     tasks['csvjson'] = {}    
     payloads['csvjson'] = [
-        json.dumps({"body": generate_random_csv_string(100, 100)})
+        json.dumps({"body": generate_random_csv_string(100, 100)}),
+        json.dumps({"body": generate_random_csv_string(2500, 2500)}),
+        json.dumps({"body": generate_random_csv_string(1000, 1000)})
     ]
     tasks['csvjson']['python'] = ['pand']
+    tasks['csvjson']['node'] = ['csvtojson']
 
     tasks['sort'] = {}    
     payloads['sort'] = [
-        json.dumps({"list": generate_random_floats(100)})
+        json.dumps({"list": generate_random_floats(100)}),
+        json.dumps({"list": generate_random_floats(10000)}),
+        json.dumps({"list": generate_random_floats(100000)})
     ]
     tasks['sort']['python'] = ['plain']
+    tasks['sort']['node'] = ['plain']
 
     tasks['fib'] = {}    
     payloads['fib'] = [
         json.dumps({"len": 10})
     ]
-    tasks['fib']['python'] = ['']
+    tasks['fib']['python'] = ['plain']
+    tasks['fib']['node'] = ['plain']
 
     tasks['fft'] = {}    
     payloads['fft'] = [
-        json.dumps({"data": generate_fft_input(1000, (0,100))})
+        json.dumps({"data": generate_fft_input(1000, (0,100))}),
+        json.dumps({"data": generate_fft_input(10000, (0,100))}),
+        json.dumps({"data": generate_fft_input(100000, (0,100))})
     ]
     tasks['fft']['python'] = ['nump']
-
+    tasks['fft']['node'] = ['fftjs']
 
     for task in tasks:    
         for lang in tasks[task]:
@@ -431,42 +435,47 @@ def runner():
             if lang not in results[task]:
                 results[task][lang] = {}
             for lib in tasks[task][lang]:
-                if lib not in results[task][lang]:
+                if lib not in results[task][lang] or len(results[task][lang][lib]) == 0:
                     results[task][lang][lib] = []
                     payload_index = 0
                     for payload in payloads[task]:
                         print(task)
                         print(lang)
                         print(lib)
-                        print(payload)
+                        #print(payload)
                         lambda_stats = []
-                        while len(lambda_stats) == 0:
-                            lambda_stats = run_lambda(task, lang, lib, payload)
-                            print("running")
+                        try:
+                            while len(lambda_stats) == 0:
+                                lambda_stats = run_lambda(task, lang, lib, payload, 5)
+                                
+                                print("running")
 
-                        memory_used = np.array([float(stat['memory_used_mb']) for stat in lambda_stats[1:]])
-                        billed_duration = np.array([float(stat['billed_duration_ms']) for stat in lambda_stats[1:]])
+                            memory_used = np.array([float(stat['memory_used_mb']) for stat in lambda_stats[1:]])
+                            billed_duration = np.array([float(stat['billed_duration_ms']) for stat in lambda_stats[1:]])
 
-                        run_result = {
-                            'payload': payload_index,
-                            'memory_used_mb': {
-                                'average': np.mean(memory_used),
-                                'median': np.median(memory_used),
-                                'std_dev': np.std(memory_used)
-                            },
-                            'billed_duration_ms': {
-                                'average': np.mean(billed_duration),
-                                'median': np.median(billed_duration),
-                                'std_dev': np.std(billed_duration)
-                            },
-                            'billed_duration_init': {
-                                'value': lambda_stats[0]['billed_duration_ms'],
-                            }                     
-                        }
+                            run_result = {
+                                'payload': payload_index,
+                                'memory_used_mb': {
+                                    'average': np.mean(memory_used),
+                                    'median': np.median(memory_used),
+                                    'std_dev': np.std(memory_used)
+                                },
+                                'billed_duration_ms': {
+                                    'average': np.mean(billed_duration),
+                                    'median': np.median(billed_duration),
+                                    'std_dev': np.std(billed_duration)
+                                },
+                                'billed_duration_init': {
+                                    'value': lambda_stats[0]['billed_duration_ms'],
+                                }                     
+                            }
 
-                        # Store the calculated stats
-                        results[task][lang][lib].append(run_result)
-                        payload_index += 1
+                            # Store the calculated stats
+                            results[task][lang][lib].append(run_result)                            
+                            payload_index += 1
+                        except:
+                            print ("Error found")
+                            pass
                 else:
                     print (f"skipping {task} {lang} {lib}")
 
@@ -476,6 +485,6 @@ def runner():
 
     print("Results stored in lambda_stats.json")
 
-#runner()
-test_runner()
+runner()
+#test_runner()
 

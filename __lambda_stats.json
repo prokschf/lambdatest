@@ -1,0 +1,712 @@
+{
+    "invmatrix": {
+        "python": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "1.49"
+                    }
+                }
+            ],
+            "nump": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "1.60"
+                    }
+                }
+            ],
+            "pand": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "39.38"
+                    }
+                }
+            ],
+            "sci_py": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "7.23"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "15.46"
+                    }
+                }
+            ],
+            "mathjs": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "218.26"
+                    }
+                }
+            ]
+        },
+        "net": {
+            "mnet": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "1306.99"
+                    }
+                }
+            ]
+        },
+        "java": {
+            "math3": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "1050.68"
+                    }
+                }
+            ]
+        },
+        "go": {
+            "gonum": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "13.02"
+                    }
+                }
+            ]
+        }
+    },
+    "hashing": {
+        "go": {
+            "gocrypto": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "14.23"
+                    }
+                }
+            ]
+        },
+        "java": {
+            "javasec": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "412.49"
+                    }
+                }
+            ]
+        },
+        "net": {
+            "syscrypt": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "832.35"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "crypto": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "6.10"
+                    }
+                }
+            ],
+            "cryptojs": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "22.69"
+                    }
+                }
+            ],
+            "hashjs": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "64.76"
+                    }
+                }
+            ]
+        },
+        "python": {
+            "hashl": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "1.23"
+                    }
+                }
+            ],
+            "hazmat": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "804.86"
+                    }
+                }
+            ]
+        }
+    },
+    "knn": {
+        "python": {
+            "nump": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "205.84"
+                    }
+                }
+            ],
+            "skl": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "225.12"
+                    }
+                }
+            ],
+            "anno": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "219.91"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "mlknn": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "258.01"
+                    }
+                }
+            ]
+        },
+        "net": {
+            "linqnet": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "1112.15"
+                    }
+                }
+            ]
+        },
+        "java": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "2672.17"
+                    }
+                }
+            ]
+        },
+        "go": {
+            "gomath": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "19.03"
+                    }
+                }
+            ]
+        }
+    },
+    "convertimg": {
+        "python": {
+            "pilpy": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "859.39"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "shar": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "1558.57"
+                    }
+                }
+            ]
+        },
+        "go": {
+            "goimage": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "1860.53"
+                    }
+                }
+            ],
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "1573.05"
+                    }
+                }
+            ]
+        }
+    },
+    "s3read": {
+        "python": {
+            "boto": []
+        },
+        "node": {
+            "plain": []
+        },
+        "go": {
+            "sdk": []
+        }
+    },
+    "csvjson": {
+        "python": {
+            "pand": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "11.59"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "csvtojson": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "12.75"
+                    }
+                }
+            ]
+        }
+    },
+    "sort": {
+        "python": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "2.04"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "2.68"
+                    }
+                }
+            ]
+        }
+    },
+    "fib": {
+        "python": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "1.25"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "2.50"
+                    }
+                }
+            ]
+        }
+    },
+    "fft": {
+        "python": {
+            "nump": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_ms": {
+                        "average": NaN,
+                        "median": NaN,
+                        "std_dev": NaN
+                    },
+                    "billed_duration_init": {
+                        "value": "55.01"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "fftjs": []
+        }
+    }
+}

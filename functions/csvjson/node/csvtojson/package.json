@@ -4,10 +4,6 @@
     "description": "AWS Lambda function for matrix inversion",
     "main": "index.js",
     "dependencies": {
-        "aws-sdk": "^2.1585.0",
-        "axios": "^1.6.8",
-        "hash.js": "^1.1.7",
-        "sharp": "^0.33.3",
-        "uuid": "^9.0.1"
+        "csvtojson": "^2.0.10"
     }
 }

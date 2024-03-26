@@ -8,6 +8,7 @@ require (
 )
 
 require (
+	github.com/aws/aws-lambda-go v1.46.0 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.26.0 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.6.1 // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.17.9 // indirect

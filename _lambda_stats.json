@@ -1,0 +1,1952 @@
+{
+    "invmatrix": {
+        "python": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 40.0,
+                        "median": 40.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 1.3942105263157896,
+                        "median": 1.37,
+                        "std_dev": 0.1280343617312693
+                    },
+                    "billed_duration_init": {
+                        "value": "1.60"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 40.0,
+                        "median": 40.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.9289473684210527,
+                        "median": 2.04,
+                        "std_dev": 3.7695258598073353
+                    },
+                    "billed_duration_init": {
+                        "value": "1.87"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 40.0,
+                        "median": 40.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 43.69631578947369,
+                        "median": 46.74,
+                        "std_dev": 12.275162861188361
+                    },
+                    "billed_duration_init": {
+                        "value": "41.59"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 41.0,
+                        "median": 41.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 708.998947368421,
+                        "median": 712.25,
+                        "std_dev": 25.26575233388528
+                    },
+                    "billed_duration_init": {
+                        "value": "739.72"
+                    }
+                }
+            ],
+            "nump": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 64.0,
+                        "median": 64.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.305263157894737,
+                        "median": 1.49,
+                        "std_dev": 2.4576697744452174
+                    },
+                    "billed_duration_init": {
+                        "value": "1.64"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 64.0,
+                        "median": 64.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.1826315789473685,
+                        "median": 1.77,
+                        "std_dev": 1.2277529414823485
+                    },
+                    "billed_duration_init": {
+                        "value": "1.62"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 64.0,
+                        "median": 64.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 12.527368421052632,
+                        "median": 11.0,
+                        "std_dev": 6.822960340763703
+                    },
+                    "billed_duration_init": {
+                        "value": "14.05"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 65.0,
+                        "median": 65.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 131.58105263157896,
+                        "median": 132.71,
+                        "std_dev": 8.155894797298354
+                    },
+                    "billed_duration_init": {
+                        "value": "132.28"
+                    }
+                }
+            ],
+            "pand": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 106.0,
+                        "median": 106.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 7.017894736842106,
+                        "median": 2.05,
+                        "std_dev": 8.30302010935106
+                    },
+                    "billed_duration_init": {
+                        "value": "7.90"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 106.0,
+                        "median": 106.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 10.430526315789475,
+                        "median": 8.06,
+                        "std_dev": 6.5313595535484446
+                    },
+                    "billed_duration_init": {
+                        "value": "2.22"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 107.0,
+                        "median": 107.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 36.27263157894737,
+                        "median": 38.69,
+                        "std_dev": 7.7036634088527975
+                    },
+                    "billed_duration_init": {
+                        "value": "33.98"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 107.0,
+                        "median": 107.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 153.05736842105262,
+                        "median": 154.38,
+                        "std_dev": 10.222542603741918
+                    },
+                    "billed_duration_init": {
+                        "value": "163.68"
+                    }
+                }
+            ],
+            "sci_py": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 82.89473684210526,
+                        "median": 83.0,
+                        "std_dev": 0.30689220499185793
+                    },
+                    "billed_duration_ms": {
+                        "average": 1.4963157894736843,
+                        "median": 1.43,
+                        "std_dev": 0.25512041586826756
+                    },
+                    "billed_duration_init": {
+                        "value": "1.51"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 83.0,
+                        "median": 83.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.126842105263158,
+                        "median": 1.72,
+                        "std_dev": 1.8130435377580139
+                    },
+                    "billed_duration_init": {
+                        "value": "1.67"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 83.0,
+                        "median": 83.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 10.857368421052634,
+                        "median": 9.89,
+                        "std_dev": 5.0592800008918095
+                    },
+                    "billed_duration_init": {
+                        "value": "17.34"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 84.0,
+                        "median": 84.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 110.33894736842106,
+                        "median": 110.7,
+                        "std_dev": 9.24456875811661
+                    },
+                    "billed_duration_init": {
+                        "value": "118.46"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 57.8421052631579,
+                        "median": 58.0,
+                        "std_dev": 0.36464227527765836
+                    },
+                    "billed_duration_ms": {
+                        "average": 4.7368421052631575,
+                        "median": 1.29,
+                        "std_dev": 12.810618972116586
+                    },
+                    "billed_duration_init": {
+                        "value": "1.23"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 64.78947368421052,
+                        "median": 65.0,
+                        "std_dev": 0.5210260492953508
+                    },
+                    "billed_duration_ms": {
+                        "average": 8.407368421052633,
+                        "median": 1.34,
+                        "std_dev": 17.067128405861386
+                    },
+                    "billed_duration_init": {
+                        "value": "1.38"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 65.0,
+                        "median": 65.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 1.5089473684210528,
+                        "median": 1.46,
+                        "std_dev": 0.16315619693513927
+                    },
+                    "billed_duration_init": {
+                        "value": "1.35"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 66.0,
+                        "median": 66.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 12.206315789473683,
+                        "median": 13.44,
+                        "std_dev": 5.180360900378635
+                    },
+                    "billed_duration_init": {
+                        "value": "16.83"
+                    }
+                }
+            ],
+            "mathjs": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 110.0,
+                        "median": 110.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.634736842105263,
+                        "median": 1.58,
+                        "std_dev": 4.322320731932707
+                    },
+                    "billed_duration_init": {
+                        "value": "1.69"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 111.0,
+                        "median": 111.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 14.929473684210524,
+                        "median": 1.61,
+                        "std_dev": 34.81203217184423
+                    },
+                    "billed_duration_init": {
+                        "value": "38.99"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 112.0,
+                        "median": 112.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 10.40842105263158,
+                        "median": 4.68,
+                        "std_dev": 13.028468530252022
+                    },
+                    "billed_duration_init": {
+                        "value": "8.28"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 112.0,
+                        "median": 112.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 171.30315789473684,
+                        "median": 167.27,
+                        "std_dev": 28.469965716917155
+                    },
+                    "billed_duration_init": {
+                        "value": "164.37"
+                    }
+                }
+            ]
+        },
+        "net": {
+            "mnet": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 67.07142857142857,
+                        "median": 67.0,
+                        "std_dev": 0.4573660169594892
+                    },
+                    "billed_duration_ms": {
+                        "average": 42.82142857142857,
+                        "median": 41.295,
+                        "std_dev": 26.960974139125838
+                    },
+                    "billed_duration_init": {
+                        "value": "87.93"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 71.64285714285714,
+                        "median": 71.0,
+                        "std_dev": 2.2868300847974457
+                    },
+                    "billed_duration_ms": {
+                        "average": 42.00428571428573,
+                        "median": 31.095,
+                        "std_dev": 33.868676998558016
+                    },
+                    "billed_duration_init": {
+                        "value": "1.62"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 77.0,
+                        "median": 77.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 70.68,
+                        "median": 39.885000000000005,
+                        "std_dev": 72.58624594232711
+                    },
+                    "billed_duration_init": {
+                        "value": "84.19"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 83.21428571428571,
+                        "median": 83.0,
+                        "std_dev": 1.2637004294967236
+                    },
+                    "billed_duration_ms": {
+                        "average": 93.78000000000002,
+                        "median": 76.83,
+                        "std_dev": 66.975350582989
+                    },
+                    "billed_duration_init": {
+                        "value": "73.35"
+                    }
+                }
+            ]
+        },
+        "java": {
+            "math3": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 85.0,
+                        "median": 85.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 8.27421052631579,
+                        "median": 2.04,
+                        "std_dev": 11.74788326545836
+                    },
+                    "billed_duration_init": {
+                        "value": "2.05"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 88.73684210526316,
+                        "median": 89.0,
+                        "std_dev": 1.6170833153407598
+                    },
+                    "billed_duration_ms": {
+                        "average": 57.69368421052632,
+                        "median": 55.25,
+                        "std_dev": 23.43501478569067
+                    },
+                    "billed_duration_init": {
+                        "value": "43.92"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 97.52631578947368,
+                        "median": 98.0,
+                        "std_dev": 1.4642555519203742
+                    },
+                    "billed_duration_ms": {
+                        "average": 178.52,
+                        "median": 138.91,
+                        "std_dev": 84.68861416047055
+                    },
+                    "billed_duration_init": {
+                        "value": "334.58"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 99.0,
+                        "median": 99.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 252.0368421052632,
+                        "median": 263.4,
+                        "std_dev": 99.79744507079968
+                    },
+                    "billed_duration_init": {
+                        "value": "375.49"
+                    }
+                }
+            ]
+        },
+        "go": {
+            "gonum": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 32.73684210526316,
+                        "median": 33.0,
+                        "std_dev": 0.44034738238635557
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.2221052631578946,
+                        "median": 1.37,
+                        "std_dev": 3.4280922712929733
+                    },
+                    "billed_duration_init": {
+                        "value": "1.59"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 33.63157894736842,
+                        "median": 34.0,
+                        "std_dev": 0.4823763889427201
+                    },
+                    "billed_duration_ms": {
+                        "average": 1.4963157894736843,
+                        "median": 1.46,
+                        "std_dev": 0.1727550906041263
+                    },
+                    "billed_duration_init": {
+                        "value": "1.67"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 35.26315789473684,
+                        "median": 35.0,
+                        "std_dev": 0.44034738238635557
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.4578947368421056,
+                        "median": 1.65,
+                        "std_dev": 3.365786963498509
+                    },
+                    "billed_duration_init": {
+                        "value": "1.64"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 41.0,
+                        "median": 41.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 10.186315789473685,
+                        "median": 11.56,
+                        "std_dev": 5.036004275035094
+                    },
+                    "billed_duration_init": {
+                        "value": "14.38"
+                    }
+                }
+            ]
+        }
+    },
+    "hashing": {
+        "go": {
+            "gocrypto": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 30.63157894736842,
+                        "median": 31.0,
+                        "std_dev": 0.4823763889427201
+                    },
+                    "billed_duration_ms": {
+                        "average": 1.3415789473684212,
+                        "median": 1.3,
+                        "std_dev": 0.14539467730410788
+                    },
+                    "billed_duration_init": {
+                        "value": "1.40"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 34.473684210526315,
+                        "median": 35.0,
+                        "std_dev": 0.8187552203212655
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.539473684210526,
+                        "median": 1.59,
+                        "std_dev": 3.8608282090548642
+                    },
+                    "billed_duration_init": {
+                        "value": "13.06"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 36.8421052631579,
+                        "median": 37.0,
+                        "std_dev": 0.36464227527765836
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.1673684210526316,
+                        "median": 1.74,
+                        "std_dev": 1.4889800186184081
+                    },
+                    "billed_duration_init": {
+                        "value": "1.69"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 37.0,
+                        "median": 37.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 4.5484210526315785,
+                        "median": 1.92,
+                        "std_dev": 8.909218326606196
+                    },
+                    "billed_duration_init": {
+                        "value": "8.71"
+                    }
+                }
+            ]
+        },
+        "java": {
+            "javasec": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 84.0,
+                        "median": 84.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 7.643157894736842,
+                        "median": 1.56,
+                        "std_dev": 14.10317099566491
+                    },
+                    "billed_duration_init": {
+                        "value": "16.86"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 85.0,
+                        "median": 85.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 3.1110526315789473,
+                        "median": 2.09,
+                        "std_dev": 3.6092365350099973
+                    },
+                    "billed_duration_init": {
+                        "value": "87.14"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 85.0,
+                        "median": 85.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.810526315789474,
+                        "median": 1.78,
+                        "std_dev": 4.300397134273227
+                    },
+                    "billed_duration_init": {
+                        "value": "1.77"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 85.0,
+                        "median": 85.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.0542105263157895,
+                        "median": 2.02,
+                        "std_dev": 0.1710129508630293
+                    },
+                    "billed_duration_init": {
+                        "value": "1.92"
+                    }
+                }
+            ]
+        },
+        "net": {
+            "syscrypt": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 68.89473684210526,
+                        "median": 69.0,
+                        "std_dev": 0.6402907926629705
+                    },
+                    "billed_duration_ms": {
+                        "average": 30.805789473684214,
+                        "median": 21.8,
+                        "std_dev": 27.43641343673528
+                    },
+                    "billed_duration_init": {
+                        "value": "42.35"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 78.89473684210526,
+                        "median": 80.0,
+                        "std_dev": 2.0234087143937987
+                    },
+                    "billed_duration_ms": {
+                        "average": 54.461052631578944,
+                        "median": 30.35,
+                        "std_dev": 74.58609478806402
+                    },
+                    "billed_duration_init": {
+                        "value": "39.38"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 87.05263157894737,
+                        "median": 87.0,
+                        "std_dev": 1.637510440642531
+                    },
+                    "billed_duration_ms": {
+                        "average": 98.37894736842104,
+                        "median": 49.77,
+                        "std_dev": 109.14321836321962
+                    },
+                    "billed_duration_init": {
+                        "value": "35.61"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 91.15789473684211,
+                        "median": 91.0,
+                        "std_dev": 0.6698906348083081
+                    },
+                    "billed_duration_ms": {
+                        "average": 53.31473684210526,
+                        "median": 40.63,
+                        "std_dev": 36.76638243779672
+                    },
+                    "billed_duration_init": {
+                        "value": "28.19"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "crypto": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 57.78947368421053,
+                        "median": 58.0,
+                        "std_dev": 0.40768245749551757
+                    },
+                    "billed_duration_ms": {
+                        "average": 8.052631578947368,
+                        "median": 1.41,
+                        "std_dev": 27.795972226604356
+                    },
+                    "billed_duration_init": {
+                        "value": "1.51"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 59.0,
+                        "median": 59.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 1.6368421052631579,
+                        "median": 1.57,
+                        "std_dev": 0.20711178348593728
+                    },
+                    "billed_duration_init": {
+                        "value": "2.12"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 60.0,
+                        "median": 60.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.5573684210526317,
+                        "median": 1.7,
+                        "std_dev": 3.481935097350418
+                    },
+                    "billed_duration_init": {
+                        "value": "1.58"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 60.0,
+                        "median": 60.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 1.9384210526315788,
+                        "median": 1.83,
+                        "std_dev": 0.21786676657498577
+                    },
+                    "billed_duration_init": {
+                        "value": "2.03"
+                    }
+                }
+            ],
+            "cryptojs": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 64.63157894736842,
+                        "median": 65.0,
+                        "std_dev": 0.9846466807299845
+                    },
+                    "billed_duration_ms": {
+                        "average": 17.307894736842105,
+                        "median": 1.69,
+                        "std_dev": 42.24097082952164
+                    },
+                    "billed_duration_init": {
+                        "value": "1.70"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 67.0,
+                        "median": 67.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 9.675789473684212,
+                        "median": 9.3,
+                        "std_dev": 8.803428946656895
+                    },
+                    "billed_duration_init": {
+                        "value": "19.68"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 68.0,
+                        "median": 68.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 20.353157894736842,
+                        "median": 13.19,
+                        "std_dev": 25.742620414735843
+                    },
+                    "billed_duration_init": {
+                        "value": "38.34"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 68.26315789473684,
+                        "median": 68.0,
+                        "std_dev": 0.6359497880839248
+                    },
+                    "billed_duration_ms": {
+                        "average": 38.34,
+                        "median": 33.66,
+                        "std_dev": 15.780495622928424
+                    },
+                    "billed_duration_init": {
+                        "value": "44.96"
+                    }
+                }
+            ],
+            "hashjs": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 63.78947368421053,
+                        "median": 64.0,
+                        "std_dev": 0.40768245749551757
+                    },
+                    "billed_duration_ms": {
+                        "average": 7.101578947368421,
+                        "median": 1.57,
+                        "std_dev": 15.515970808766822
+                    },
+                    "billed_duration_init": {
+                        "value": "1.54"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 66.0,
+                        "median": 66.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 9.050526315789472,
+                        "median": 4.69,
+                        "std_dev": 9.223208411783949
+                    },
+                    "billed_duration_init": {
+                        "value": "2.35"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 67.94736842105263,
+                        "median": 68.0,
+                        "std_dev": 0.2232968782694361
+                    },
+                    "billed_duration_ms": {
+                        "average": 14.56842105263158,
+                        "median": 15.57,
+                        "std_dev": 5.834916914717985
+                    },
+                    "billed_duration_init": {
+                        "value": "19.78"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 70.78947368421052,
+                        "median": 71.0,
+                        "std_dev": 1.1506953215302866
+                    },
+                    "billed_duration_ms": {
+                        "average": 30.065263157894737,
+                        "median": 29.48,
+                        "std_dev": 10.775960755028104
+                    },
+                    "billed_duration_init": {
+                        "value": "30.85"
+                    }
+                }
+            ]
+        },
+        "python": {
+            "hashl": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 40.10526315789474,
+                        "median": 40.0,
+                        "std_dev": 0.30689220499185793
+                    },
+                    "billed_duration_ms": {
+                        "average": 1.3242105263157893,
+                        "median": 1.32,
+                        "std_dev": 0.1665853910784965
+                    },
+                    "billed_duration_init": {
+                        "value": "1.25"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 41.0,
+                        "median": 41.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 3.2115789473684213,
+                        "median": 2.1,
+                        "std_dev": 3.1133891892545833
+                    },
+                    "billed_duration_init": {
+                        "value": "2.15"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 41.0,
+                        "median": 41.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 14.878421052631575,
+                        "median": 15.05,
+                        "std_dev": 6.242987866953228
+                    },
+                    "billed_duration_init": {
+                        "value": "16.14"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 41.0,
+                        "median": 41.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 17.581052631578945,
+                        "median": 15.98,
+                        "std_dev": 10.914691641489872
+                    },
+                    "billed_duration_init": {
+                        "value": "16.76"
+                    }
+                }
+            ],
+            "hazmat": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 52.10526315789474,
+                        "median": 52.0,
+                        "std_dev": 0.4465937565388721
+                    },
+                    "billed_duration_ms": {
+                        "average": 3.275263157894737,
+                        "median": 1.39,
+                        "std_dev": 7.931927733049948
+                    },
+                    "billed_duration_init": {
+                        "value": "1.50"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 53.0,
+                        "median": 53.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 3.4336842105263155,
+                        "median": 2.2,
+                        "std_dev": 3.563853931861606
+                    },
+                    "billed_duration_init": {
+                        "value": "2.28"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 53.0,
+                        "median": 53.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 15.640526315789472,
+                        "median": 17.4,
+                        "std_dev": 5.905963510397739
+                    },
+                    "billed_duration_init": {
+                        "value": "16.21"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 53.0,
+                        "median": 53.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 22.011578947368424,
+                        "median": 21.39,
+                        "std_dev": 8.74828901356259
+                    },
+                    "billed_duration_init": {
+                        "value": "22.16"
+                    }
+                }
+            ]
+        }
+    },
+    "knn": {
+        "python": {
+            "nump": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 66.0,
+                        "median": 66.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 32.58857142857143,
+                        "median": 34.045,
+                        "std_dev": 8.38756465348116
+                    },
+                    "billed_duration_init": {
+                        "value": "40.09"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 91.57142857142857,
+                        "median": 92.0,
+                        "std_dev": 0.8206518066482896
+                    },
+                    "billed_duration_ms": {
+                        "average": 393.5828571428571,
+                        "median": 390.46500000000003,
+                        "std_dev": 13.34209044906458
+                    },
+                    "billed_duration_init": {
+                        "value": "378.08"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 121.78571428571429,
+                        "median": 123.0,
+                        "std_dev": 2.3957871187497752
+                    },
+                    "billed_duration_ms": {
+                        "average": 1003.4549999999998,
+                        "median": 999.9,
+                        "std_dev": 20.86527318297078
+                    },
+                    "billed_duration_init": {
+                        "value": "1005.95"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 124.16666666666667,
+                        "median": 126.0,
+                        "std_dev": 4.9805175991613115
+                    },
+                    "billed_duration_ms": {
+                        "average": 1932.763333333333,
+                        "median": 2166.995,
+                        "std_dev": 587.0013543898818
+                    },
+                    "billed_duration_init": {
+                        "value": "2845.22"
+                    }
+                }
+            ],
+            "skl": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 122.0,
+                        "median": 122.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 30.779285714285713,
+                        "median": 31.21,
+                        "std_dev": 9.0945002723669
+                    },
+                    "billed_duration_init": {
+                        "value": "25.79"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 122.0,
+                        "median": 122.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 417.8171428571428,
+                        "median": 413.33500000000004,
+                        "std_dev": 22.230791203891524
+                    },
+                    "billed_duration_init": {
+                        "value": "404.37"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 128.14285714285714,
+                        "median": 128.0,
+                        "std_dev": 0.3499271061118826
+                    },
+                    "billed_duration_ms": {
+                        "average": 1293.9257142857143,
+                        "median": 1074.7849999999999,
+                        "std_dev": 603.4729101117758
+                    },
+                    "billed_duration_init": {
+                        "value": "1621.10"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 128.0,
+                        "median": 128.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 3757.6714285714293,
+                        "median": 2592.3599999999997,
+                        "std_dev": 3048.783309391884
+                    },
+                    "billed_duration_init": {
+                        "value": "2765.36"
+                    }
+                }
+            ],
+            "anno": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 67.0,
+                        "median": 67.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 33.04357142857142,
+                        "median": 32.84,
+                        "std_dev": 6.479845244120812
+                    },
+                    "billed_duration_init": {
+                        "value": "25.80"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 92.71428571428571,
+                        "median": 93.0,
+                        "std_dev": 0.4517539514526257
+                    },
+                    "billed_duration_ms": {
+                        "average": 383.0349999999999,
+                        "median": 381.545,
+                        "std_dev": 10.913143942708988
+                    },
+                    "billed_duration_init": {
+                        "value": "384.94"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 121.85714285714286,
+                        "median": 123.0,
+                        "std_dev": 1.8070158058105021
+                    },
+                    "billed_duration_ms": {
+                        "average": 976.0842857142856,
+                        "median": 977.55,
+                        "std_dev": 10.983772260076451
+                    },
+                    "billed_duration_init": {
+                        "value": "979.94"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 119.07142857142857,
+                        "median": 128.0,
+                        "std_dev": 12.578123217454557
+                    },
+                    "billed_duration_ms": {
+                        "average": 2648.7549999999997,
+                        "median": 2127.89,
+                        "std_dev": 1194.3635865044853
+                    },
+                    "billed_duration_init": {
+                        "value": "2198.64"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "mlknn": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 114.0,
+                        "median": 114.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 8.73642857142857,
+                        "median": 6.855,
+                        "std_dev": 7.308023581890618
+                    },
+                    "billed_duration_init": {
+                        "value": "2.41"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 121.0,
+                        "median": 121.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 216.22428571428568,
+                        "median": 142.06,
+                        "std_dev": 153.26079755549668
+                    },
+                    "billed_duration_init": {
+                        "value": "157.07"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 126.0,
+                        "median": 126.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 489.26785714285717,
+                        "median": 360.38,
+                        "std_dev": 222.34196979230543
+                    },
+                    "billed_duration_init": {
+                        "value": "337.98"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 128.0,
+                        "median": 128.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 1093.3385714285714,
+                        "median": 1099.49,
+                        "std_dev": 237.77475304092624
+                    },
+                    "billed_duration_init": {
+                        "value": "1358.78"
+                    }
+                }
+            ]
+        },
+        "net": {
+            "linqnet": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 73.13793103448276,
+                        "median": 74.0,
+                        "std_dev": 2.0963702280787118
+                    },
+                    "billed_duration_ms": {
+                        "average": 72.10689655172413,
+                        "median": 59.78,
+                        "std_dev": 51.76512686485108
+                    },
+                    "billed_duration_init": {
+                        "value": "1159.34"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 86.93103448275862,
+                        "median": 86.0,
+                        "std_dev": 3.1065118978083333
+                    },
+                    "billed_duration_ms": {
+                        "average": 213.1275862068966,
+                        "median": 215.69,
+                        "std_dev": 82.09879526417409
+                    },
+                    "billed_duration_init": {
+                        "value": "257.39"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 111.6896551724138,
+                        "median": 114.0,
+                        "std_dev": 4.227198047095712
+                    },
+                    "billed_duration_ms": {
+                        "average": 415.8444827586207,
+                        "median": 397.19,
+                        "std_dev": 239.93209798903968
+                    },
+                    "billed_duration_init": {
+                        "value": "632.36"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 127.20689655172414,
+                        "median": 128.0,
+                        "std_dev": 1.8076334375284355
+                    },
+                    "billed_duration_ms": {
+                        "average": 566.5755172413793,
+                        "median": 472.17,
+                        "std_dev": 243.46499342766398
+                    },
+                    "billed_duration_init": {
+                        "value": "594.60"
+                    }
+                }
+            ]
+        },
+        "go": {
+            "gomath": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 35.86206896551724,
+                        "median": 36.0,
+                        "std_dev": 1.4791455578984287
+                    },
+                    "billed_duration_ms": {
+                        "average": 4.0731034482758615,
+                        "median": 2.79,
+                        "std_dev": 3.863551254952273
+                    },
+                    "billed_duration_init": {
+                        "value": "22.85"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 50.62068965517241,
+                        "median": 52.0,
+                        "std_dev": 1.8830238539966961
+                    },
+                    "billed_duration_ms": {
+                        "average": 94.2448275862069,
+                        "median": 93.78,
+                        "std_dev": 13.5115597049315
+                    },
+                    "billed_duration_init": {
+                        "value": "125.41"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 87.65517241379311,
+                        "median": 91.0,
+                        "std_dev": 5.012232361546655
+                    },
+                    "billed_duration_ms": {
+                        "average": 229.50413793103448,
+                        "median": 230.04,
+                        "std_dev": 30.898270291643474
+                    },
+                    "billed_duration_init": {
+                        "value": "380.00"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 144.68965517241378,
+                        "median": 145.0,
+                        "std_dev": 2.2758620689655173
+                    },
+                    "billed_duration_ms": {
+                        "average": 487.00620689655176,
+                        "median": 481.21,
+                        "std_dev": 45.276068841610986
+                    },
+                    "billed_duration_init": {
+                        "value": "704.03"
+                    }
+                }
+            ]
+        },
+        "java": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 90.58620689655173,
+                        "median": 91.0,
+                        "std_dev": 0.49251230541674823
+                    },
+                    "billed_duration_ms": {
+                        "average": 74.52758620689654,
+                        "median": 21.15,
+                        "std_dev": 103.98504645994564
+                    },
+                    "billed_duration_init": {
+                        "value": "2913.08"
+                    }
+                },
+                {
+                    "payload": 1,
+                    "memory_used_mb": {
+                        "average": 101.20689655172414,
+                        "median": 102.0,
+                        "std_dev": 1.7095938284469714
+                    },
+                    "billed_duration_ms": {
+                        "average": 285.37068965517244,
+                        "median": 290.04,
+                        "std_dev": 31.661969129849588
+                    },
+                    "billed_duration_init": {
+                        "value": "928.26"
+                    }
+                },
+                {
+                    "payload": 2,
+                    "memory_used_mb": {
+                        "average": 114.06896551724138,
+                        "median": 114.0,
+                        "std_dev": 1.0481851140393559
+                    },
+                    "billed_duration_ms": {
+                        "average": 692.9696551724138,
+                        "median": 684.08,
+                        "std_dev": 61.191753866517054
+                    },
+                    "billed_duration_init": {
+                        "value": "1193.57"
+                    }
+                },
+                {
+                    "payload": 3,
+                    "memory_used_mb": {
+                        "average": 145.6551724137931,
+                        "median": 146.0,
+                        "std_dev": 0.9201147630431954
+                    },
+                    "billed_duration_ms": {
+                        "average": 1285.1855172413798,
+                        "median": 1286.8,
+                        "std_dev": 17.233398125133604
+                    },
+                    "billed_duration_init": {
+                        "value": "1563.03"
+                    }
+                }
+            ]
+        }
+    },
+    "convertimg": {
+        "python": {
+            "pilpy": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 102.24137931034483,
+                        "median": 102.0,
+                        "std_dev": 0.6245093198715461
+                    },
+                    "billed_duration_ms": {
+                        "average": 397.29448275862075,
+                        "median": 399.2,
+                        "std_dev": 22.860085314681797
+                    },
+                    "billed_duration_init": {
+                        "value": "991.22"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "shar": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 159.51724137931035,
+                        "median": 162.0,
+                        "std_dev": 4.72426377884225
+                    },
+                    "billed_duration_ms": {
+                        "average": 871.8841379310345,
+                        "median": 847.94,
+                        "std_dev": 71.96405153902889
+                    },
+                    "billed_duration_init": {
+                        "value": "1493.01"
+                    }
+                }
+            ]
+        },
+        "go": {
+            "goimage": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 86.13793103448276,
+                        "median": 86.0,
+                        "std_dev": 0.936763979807319
+                    },
+                    "billed_duration_ms": {
+                        "average": 1283.8993103448274,
+                        "median": 1268.76,
+                        "std_dev": 42.29610823631614
+                    },
+                    "billed_duration_init": {
+                        "value": "1711.02"
+                    }
+                }
+            ],
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 87.48275862068965,
+                        "median": 86.0,
+                        "std_dev": 2.3725541257613205
+                    },
+                    "billed_duration_ms": {
+                        "average": 1159.3482758620692,
+                        "median": 1152.71,
+                        "std_dev": 42.4647071366301
+                    },
+                    "billed_duration_init": {
+                        "value": "1678.40"
+                    }
+                }
+            ]
+        },
+        "goimage": {
+            "goimage": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 86.24137931034483,
+                        "median": 86.0,
+                        "std_dev": 0.6774787139444312
+                    },
+                    "billed_duration_ms": {
+                        "average": 1329.5693103448275,
+                        "median": 1331.05,
+                        "std_dev": 31.112540983033316
+                    },
+                    "billed_duration_init": {
+                        "value": "1446.07"
+                    }
+                }
+            ]
+        }
+    },
+    "s3read": {
+        "python": {
+            "boto": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 39.62068965517241,
+                        "median": 40.0,
+                        "std_dev": 0.48521542343001
+                    },
+                    "billed_duration_ms": {
+                        "average": 1.4993103448275862,
+                        "median": 1.41,
+                        "std_dev": 0.39643176596407903
+                    },
+                    "billed_duration_init": {
+                        "value": "2.55"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 12.0,
+                        "median": 12.0,
+                        "std_dev": 0.0
+                    },
+                    "billed_duration_ms": {
+                        "average": 961.4193103448274,
+                        "median": 959.8,
+                        "std_dev": 20.04317338957021
+                    },
+                    "billed_duration_init": {
+                        "value": "1015.32"
+                    }
+                }
+            ]
+        },
+        "go": {
+            "sdk": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 11.241379310344827,
+                        "median": 11.0,
+                        "std_dev": 0.5020765440883116
+                    },
+                    "billed_duration_ms": {
+                        "average": 309.97655172413795,
+                        "median": 317.46,
+                        "std_dev": 34.36169401667503
+                    },
+                    "billed_duration_init": {
+                        "value": "621.68"
+                    }
+                }
+            ]
+        }
+    },
+    "csvjson": {
+        "python": {
+            "pand": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 105.62068965517241,
+                        "median": 106.0,
+                        "std_dev": 0.48521542343001
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.356896551724138,
+                        "median": 2.29,
+                        "std_dev": 0.2895192620389146
+                    },
+                    "billed_duration_init": {
+                        "value": "11.91"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "csvtojson": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 66.34482758620689,
+                        "median": 66.0,
+                        "std_dev": 1.6871903203758714
+                    },
+                    "billed_duration_ms": {
+                        "average": 6.243793103448275,
+                        "median": 1.67,
+                        "std_dev": 17.363880547888243
+                    },
+                    "billed_duration_init": {
+                        "value": "3.42"
+                    }
+                }
+            ]
+        }
+    },
+    "sort": {
+        "python": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 39.58620689655172,
+                        "median": 40.0,
+                        "std_dev": 0.4925123054167483
+                    },
+                    "billed_duration_ms": {
+                        "average": 2.313793103448276,
+                        "median": 1.57,
+                        "std_dev": 3.5775983215415987
+                    },
+                    "billed_duration_init": {
+                        "value": "2.05"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 79.79310344827586,
+                        "median": 80.0,
+                        "std_dev": 0.4050806939472665
+                    },
+                    "billed_duration_ms": {
+                        "average": 5.413448275862069,
+                        "median": 1.5,
+                        "std_dev": 15.14347936967388
+                    },
+                    "billed_duration_init": {
+                        "value": "2.77"
+                    }
+                }
+            ]
+        }
+    },
+    "fib": {
+        "python": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 39.62068965517241,
+                        "median": 40.0,
+                        "std_dev": 0.48521542343001
+                    },
+                    "billed_duration_ms": {
+                        "average": 1.3565517241379312,
+                        "median": 1.21,
+                        "std_dev": 0.3578602680691789
+                    },
+                    "billed_duration_init": {
+                        "value": "1.54"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "plain": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 79.75862068965517,
+                        "median": 80.0,
+                        "std_dev": 0.42791978089623645
+                    },
+                    "billed_duration_ms": {
+                        "average": 4.933793103448276,
+                        "median": 1.36,
+                        "std_dev": 12.977896438067066
+                    },
+                    "billed_duration_init": {
+                        "value": "3.35"
+                    }
+                }
+            ]
+        }
+    },
+    "fft": {
+        "python": {
+            "nump": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 63.827586206896555,
+                        "median": 64.0,
+                        "std_dev": 0.377739694831149
+                    },
+                    "billed_duration_ms": {
+                        "average": 38.43586206896552,
+                        "median": 40.58,
+                        "std_dev": 6.204959372031476
+                    },
+                    "billed_duration_init": {
+                        "value": "58.78"
+                    }
+                }
+            ]
+        },
+        "node": {
+            "fftjs": [
+                {
+                    "payload": 0,
+                    "memory_used_mb": {
+                        "average": 65.06896551724138,
+                        "median": 65.0,
+                        "std_dev": 1.9106062313372512
+                    },
+                    "billed_duration_ms": {
+                        "average": 8.129999999999999,
+                        "median": 2.94,
+                        "std_dev": 11.327920647978452
+                    },
+                    "billed_duration_init": {
+                        "value": "74.16"
+                    }
+                }
+            ]
+        }
+    }
+}

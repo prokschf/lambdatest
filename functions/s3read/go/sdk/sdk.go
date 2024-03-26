@@ -3,24 +3,26 @@ package main
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
-	"os"
+	"io"
 
+	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 )
 
-func main() {
-	bucketName := "imgtemp2" // Specify your bucket name
-	objectKey := "short.txt" // Specify the S3 object key
+// Define the structure of your event here
+// For this example, we're assuming the event has bucketName and objectKey fields
+type MyEvent struct {
+	BucketName string `json:"bucketName"`
+	ObjectKey  string `json:"objectKey"`
+}
 
+// Handler is the Lambda function handler
+func Handler(ctx context.Context, event MyEvent) (string, error) {
 	// Load the AWS default configuration
-	cfg, err := config.LoadDefaultConfig(context.TODO(),
-		config.WithRegion("us-east-1"), // Specify the AWS Region
-	)
+	cfg, err := config.LoadDefaultConfig(ctx, config.WithRegion("us-east-1")) // Specify the AWS Region
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "failed to load configuration, %v\n", err)
-		os.Exit(1)
+		return "", fmt.Errorf("failed to load configuration, %v", err)
 	}
 
 	// Create an Amazon S3 service client
@@ -28,22 +30,25 @@ func main() {
 
 	// Call S3 to get the object from the bucket
 	getObjectOutput, err := client.GetObject(context.TODO(), &s3.GetObjectInput{
-		Bucket: &bucketName,
-		Key:    &objectKey,
+		Bucket: &event.BucketName,
+		Key:    &event.ObjectKey,
 	})
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "failed to get object, %v\n", err)
-		os.Exit(1)
+		return "", fmt.Errorf("failed to get object, %v", err)
 	}
 	defer getObjectOutput.Body.Close()
 
 	// Read the content of the S3 object
-	content, err := ioutil.ReadAll(getObjectOutput.Body)
+	content, err := io.ReadAll(getObjectOutput.Body)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "failed to read object body, %v\n", err)
-		os.Exit(1)
+		return "", fmt.Errorf("failed to read object body, %v", err)
 	}
 
-	// Output the text content
-	fmt.Printf("S3 Object Content:\n%s\n", string(content))
+	// Return the text content
+	return string(content), nil
+}
+
+func main() {
+	// Start the Lambda function handler
+	lambda.Start(Handler)
 }

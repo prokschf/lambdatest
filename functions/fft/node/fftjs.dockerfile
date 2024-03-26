@@ -5,13 +5,13 @@ FROM public.ecr.aws/lambda/nodejs:20
 WORKDIR /var/task
 
 # Copy package.json and package-lock.json (if available) to the container
-COPY functions/convertimg/node/shar/package*.json ./
+COPY functions/fft/node/fftjs/package*.json ./
 
 # Install dependencies defined in package.json
 RUN npm install
 
 # Copy the rest of your Lambda function code
-COPY functions/convertimg/node/shar/ .
+COPY functions/fft/node/fftjs/ .
 
 # Set the CMD to your handler (assuming the handler is defined in index.js with an export name of 'handler')
 CMD ["index.handler"]
